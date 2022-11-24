@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- This block is to display the flased message frowarded from teacher() function-->
+<!--  We need for loop becoz get_flashed_messages() returns many things, so we have to loop over them-->
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+       {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+{% endfor %}
+
+<!-- Here we check if user have typed input in the boxes and submitted then if is executed otherwise else for new data-->
+{% if name %}
+    <h1 class="row4">Welcome {{ name }} !!!</h1>
+    <br/><br/><br/>
+    <table class="table table-hover table-bordered table-striped">
+
+         {% for our_teacher in our_teachers %}
+
+            <tr>
+                <td> {{ our_teacher.id }}. {{ our_teacher.teacherName }} - {{ our_teacher.subNname }} - {{ our_teacher.topic }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% else %}
+        <div class="container row4">
+                <h2>Please enter the details to upload your File</h2>
+                <div class="shadow p-3 mb-5 bg-white rounded">
+                        <form method="POST" enctype="multipart/form-data" action="/teacher">
+                                {{form.hidden_tag() }}  <!--  this is for the secret key we used in  main_hsk.py-->
+
+                                {{ form.tname.label(class="form-label") }}    <!-- here we are adding bootstraped css to
+                                                                                the label field of form via label( bootstraped css)-->
+
+                                {{ form.tname(class="form-control")}}     <!-- display the input box where teacher name will be entered -->
+                                        <br/>
+
+                                {{ form.sname.label(class="form-label") }}    <!-- display label of the Subject name -->
+
+                                {{ form.sname(class="form-control")}}     <!-- display the input box for Subject Name -->
+                                        <br/>
+                                {{ form.topictitle.label(class="form-label") }}    <!-- display label of the Topic Title -->
+
+                                {{ form.topictitle(class="form-control")}}     <!-- display the input box for Topic Title -->
+                                        <br/>
+                                {{ form.filename.label(class="form-label") }}    <!-- display label for file selector button -->
+                                {{ form.filename()}}     <!-- display file selector button -->
+                                        </br>
+                                {{ form.submit(class="btn btn-primary") }}  <!-- display submit button -->
+
+                        </form>
+                </div>
+        </div>
+{% endif %}
+{% endblock %}

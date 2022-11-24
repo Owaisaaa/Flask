@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+        <!-- <h2><font color="Black">Welcome to Home Page !!! </font> </h2> -->
+      <style>
+        .carousel-item{
+        height: 30rem;
+        background: #000;
+        }
+
+        .overlay-image{
+        bottom:0;
+        left:0;
+        right:0;
+        top:0;
+        opacity: 0.80;
+        }
+        .container{
+        font-size: 30px;
+        font-color:DodgerBlue;
+        }
+      </style>
+
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="overlay-image">
+                <img src="{{url_for('static', filename='images/img1.jpg')}}" class="d-block w-80" class="" alt="...">
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="overlay-image">
+                <img src="{{url_for('static', filename='images/img2.jpg')}}" class="d-block w-80"  alt="...">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="overlay-image">
+                <img src="{{url_for('static', filename='images/img3.jpg')}}" class="d-block w-80"  alt="...">
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <div class="clear"></div>
+        </div> <br/>
+        <!-- Main text body of the home page-->
+    <!--     <div class="wrapper row3">
+          <div class="rounded clear">
+            <div class="container">
+                 <font color="Black" size="5px">Message from the Principals Desk</font> </br>
+                </br>
+                 <h3 class="row4"> This content will be added later </h3>
+            </div>
+          </div>
+        </div> -->
+        <div id="twitter">
+          <div class="wrapper">
+            <p style="font-size: 20px"> Message from the Principals Desk</p>
+            <p>This content will be added later</p>
+          </div>
+        </div><br/>
+{% endblock %}

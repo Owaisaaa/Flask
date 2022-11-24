@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="row4">Welcome To Download Page!!!</h1>
+<!-- This block is to display the flased message frowarded from teacher() function-->
+<!--  We need for loop becoz get_flashed_messages() returns many things, so we have to loop over them-->
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+           {{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    {% endfor %}
+
+    <table class="table table-hover table-bordered table-striped">
+
+         {% for our_teacher in our_teachers %}
+
+            <tr>
+                <td>  {{ our_teacher.id }} . {{ our_teacher.teacherName }} - {{ our_teacher.subNname }} -
+                {{ our_teacher.topic }} -  <a href="{{url_for('file_download', id=our_teacher.id)}}">Download</a>
+                <a href="{{url_for('file_delete', id=our_teacher.id)}}">Delete</a></td>
+            </tr>
+         {% endfor %}
+    </table>
+
+{% endblock %}
